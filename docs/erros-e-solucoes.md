@@ -1,45 +1,29 @@
-# Usuários e Grupos — LAB 02
+# Erros e Soluções — LAB 02
 
-## Criação do usuário suporte
+## Permission denied
 
-Foi criado o usuário suporte para simular um profissional de suporte técnico.
+Durante o laboratório ocorreram erros de Permission denied ao acessar diretórios e escrever em arquivos.
 
-Comandos:
-sudo adduser suporte
-id suporte
+## Diagnóstico
 
-## Permissão administrativa
+Foram utilizados os comandos ls -l, ls -ld, id e groups para identificar permissões, proprietários e grupos.
 
-O usuário foi adicionado ao grupo sudo.
+## Causa
 
-Comandos:
-sudo usermod -aG sudo suporte
-sudo -l -U suporte
+As permissões do arquivo ou de algum diretório no caminho não permitiam o acesso necessário ao usuário.
 
-## Remoção de grupo
+## Soluções
 
-O usuário suporte foi removido do grupo users.
+Foram utilizados chmod, chown, usermod e gpasswd para corrigir permissões, proprietários e grupos.
 
-Comandos:
-sudo gpasswd -d suporte users
-groups suporte
+## Diretório compartilhado
 
-## Grupo suporte-ti
+Foi criado o diretório /lab-compartilhado.
 
-Foi criado o grupo suporte-ti para controlar o acesso a recursos compartilhados.
+O diretório foi configurado com o grupo suporte-ti e permissão 770.
 
-Comandos:
-sudo groupadd suporte-ti
-sudo usermod -aG suporte-ti denis
-sudo usermod -aG suporte-ti tecnico
-
-## Verificação
-
-Comandos:
-id suporte
-groups suporte
-groups tecnico
+O usuário tecnico, pertencente ao grupo suporte-ti, conseguiu acessar o diretório, criar arquivos, escrever e ler.
 
 ## Resultado
 
-Foi praticado o gerenciamento de usuários e grupos no Linux, incluindo criação, associação, remoção de grupos e concessão de privilégios administrativos.
+Os problemas de permissão foram identificados e corrigidos através da análise de usuários, grupos, proprietários e permissões Linux.
